@@ -4,10 +4,11 @@ import org.junit.Test;
 
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
+import static primitives_types.linked_lists.cores.LinkedListResource.MULTIPLE_ITEMS_NON_REPEATING_FIRST_NODE;
 import static primitives_types.linked_lists.cores.LinkedListResource.NULL_NODE;
 
-public class LinkedListTest<T> {
+public class LinkedListTest<T extends Comparable<T>> {
     private LinkedList<T> linkedList;
     private SinglyLinkedListNode firstNode;
 
@@ -37,14 +38,30 @@ public class LinkedListTest<T> {
 
     @Test(expected = LinkedList.NullNode.class)
     public void whenTryToFindNull_shouldThrowTheException() {
-        firstNode = LinkedListResource.MULTIPLE_ITEMS_NON_REPEATING_FIRST_NODE;
+        firstNode = MULTIPLE_ITEMS_NON_REPEATING_FIRST_NODE;
         linkedList = new LinkedList<>(firstNode);
         linkedList.findInLinkedList(null);
     }
 
     @Test
+    public void whenLinkedListIsEmpty_willReturnIsEmptyTrue() {
+        firstNode = NULL_NODE;
+        linkedList = new LinkedList<>(firstNode);
+        boolean actual = linkedList.isEmpty();
+        assertTrue(actual);
+    }
+
+    @Test
+    public void whenLinkedListIsNonEmpty_willReturnIsEmptyFalse() {
+        firstNode = MULTIPLE_ITEMS_NON_REPEATING_FIRST_NODE;
+        linkedList = new LinkedList<>(firstNode);
+        boolean actual = linkedList.isEmpty();
+        assertFalse(actual);
+    }
+
+    @Test
     public void whenValuePresentInLinkedList_findShouldReturnTrue() {
-        firstNode = LinkedListResource.MULTIPLE_ITEMS_NON_REPEATING_FIRST_NODE;
+        firstNode = MULTIPLE_ITEMS_NON_REPEATING_FIRST_NODE;
         linkedList = new LinkedList<>(firstNode);
         boolean actual = linkedList.findInLinkedList((T) "EFG");
         assertEquals(true, actual);
@@ -83,7 +100,7 @@ public class LinkedListTest<T> {
 
     @Test
     public void whenValueNotPresentInLinkedList_findShouldReturnFalse() {
-        firstNode = LinkedListResource.MULTIPLE_ITEMS_NON_REPEATING_FIRST_NODE;
+        firstNode = MULTIPLE_ITEMS_NON_REPEATING_FIRST_NODE;
         linkedList = new LinkedList<>(firstNode);
         boolean actual = linkedList.findInLinkedList((T) "EF");
         assertEquals(false, actual);

@@ -1,12 +1,13 @@
 package primitives_types.array;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.Arrays;
 
+import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.assertTrue;
 
 class BifurcateEvenOddTest {
@@ -102,14 +103,23 @@ class BifurcateEvenOddTest {
         assertBifurcatedArray(input, actual);
     }
 
-    @Test(expected = BifurcateEvenOdd.NullInput.class)
+    @Test
     public void test_NullInput() {
-        new BifurcateEvenOdd(null);
+        assertThrows(
+                BifurcateEvenOdd.NullInput.class,
+                () -> {
+                    new BifurcateEvenOdd(null);
+                }
+        );
     }
 
-    @Test(expected = BifurcateEvenOdd.NoInput.class)
+    @Test
     public void test_NoInput() {
-        int[] input = new int[]{};
-        new BifurcateEvenOdd(input);
+        assertThrows(
+                BifurcateEvenOdd.NoInput.class,
+                () -> {
+                    new BifurcateEvenOdd(new int[]{});
+                }
+        );
     }
 }

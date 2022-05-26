@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class LinkedList<T> {
+public class LinkedList<T extends Comparable<T>> {
     protected SinglyLinkedListNode<T> firstNode;
 
     public LinkedList() {
@@ -46,6 +46,10 @@ public class LinkedList<T> {
 
     public SinglyLinkedListNode<T> getFirstNode() {
         return firstNode;
+    }
+
+    public boolean isEmpty() {
+        return Objects.isNull(firstNode);
     }
 
     public List<T> getList() {

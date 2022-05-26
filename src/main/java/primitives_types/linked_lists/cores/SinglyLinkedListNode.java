@@ -1,5 +1,7 @@
 package primitives_types.linked_lists.cores;
 
+import org.jetbrains.annotations.NotNull;
+
 public class SinglyLinkedListNode<T> {
     private T data;
     private SinglyLinkedListNode<T> next;
@@ -20,4 +22,5 @@ public class SinglyLinkedListNode<T> {
     public void setNext(SinglyLinkedListNode<T> next) {
         this.next = next;
     }
+
 }
