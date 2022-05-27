@@ -5,20 +5,28 @@ import primitives_types.linked_lists.cores.LinkedList;
 import primitives_types.linked_lists.cores.SinglyLinkedListNode;
 
 import java.util.List;
+import java.util.Objects;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static primitives_types.linked_lists.cores.LinkedListResource.*;
 
 class LinkedListMergingTest<T extends Comparable<T>> {
 
-    public static final List<String> COMBINED_SORTED_LIST_1_AND_2 =
+    public static final List<String> COMBINED_STRING_SORTED_LIST_1_AND_2 =
             List.of("ABC", "BED", "BFE", "CDE", "EFG", "EFG", "FGI", "GHI", "GHI");
-    public static final List<String> EXPECTED_LIST_1 =
+    public static final List<String> EXPECTED_STRING_LIST_1 =
             List.of("ABC", "CDE", "EFG", "GHI");
-    public static final List<String> EXPECTED_LIST_2 =
+    public static final List<String> EXPECTED_STRING_LIST_2 =
             List.of("BED", "BFE", "EFG", "FGI", "GHI");
 
-    private void assertLinkedListMerging(List expected, SinglyLinkedListNode sortedList1, SinglyLinkedListNode sortedList2) {
+    public static final List<Integer> COMBINED_INTEGER_SORTED_LIST_1_AND_2 =
+            List.of(1, 2, 3, 4, 5, 6, 7);
+    public static final List<Integer> EXPECTED_INTEGER_LIST_1 =
+            List.of(1, 4, 5);
+    public static final List<Integer> EXPECTED_INTEGER_LIST_2 =
+            List.of(2, 3, 6, 7);
+
+    private void assertLinkedListMerging(List<T> expected, SinglyLinkedListNode sortedList1, SinglyLinkedListNode<T> sortedList2) {
         LinkedList<T> linkedList1 = new LinkedList<T>(sortedList1);
         LinkedList<T> linkedList2 = new LinkedList<T>(sortedList2);
         LinkedListMerging<T> linkedListMerging = new LinkedListMerging<>(linkedList1, linkedList2);
@@ -26,19 +34,50 @@ class LinkedListMergingTest<T extends Comparable<T>> {
         assertEquals(expected, actual.getList());
     }
 
+    private SinglyLinkedListNode linkedListOf(List<T> values) {
+        if (Objects.isNull(values))
+            return null;
+        SinglyLinkedListNode<T> head = new SinglyLinkedListNode<>(firstValue(values));
+        SinglyLinkedListNode<T> iter = head;
+        for (T value : values) {
+            iter.setNext(new SinglyLinkedListNode<>(value));
+            iter = iter.getNext();
+        }
+        return head.getNext();
+    }
+
+    private T firstValue(List<T> startingNode) {
+        return startingNode.get(0);
+    }
+
     @Test
     void mergeLinkedList() {
-        assertLinkedListMerging(COMBINED_SORTED_LIST_1_AND_2, SORTED_LIST_1, SORTED_LIST_2);
+        assertLinkedListMerging((List<T>) COMBINED_STRING_SORTED_LIST_1_AND_2, linkedListOf((List<T>) EXPECTED_STRING_LIST_1), linkedListOf((List<T>) EXPECTED_STRING_LIST_2));
     }
 
     @Test
     void mergeLinkedList_whenFirstNodeNull_thenShouldReturnSecondOne() {
-        assertLinkedListMerging(EXPECTED_LIST_2, NULL_NODE, SORTED_LIST_2);
+        assertLinkedListMerging((List<T>) EXPECTED_STRING_LIST_2, NULL_NODE, linkedListOf((List<T>) EXPECTED_STRING_LIST_2));
     }
 
     @Test
     void mergeLinkedList_whenSecondNodeNull_thenShouldReturnFirstOne() {
-        assertLinkedListMerging(EXPECTED_LIST_1, SORTED_LIST_1, NULL_NODE);
+        assertLinkedListMerging((List<T>) EXPECTED_STRING_LIST_1, linkedListOf((List<T>) EXPECTED_STRING_LIST_1), NULL_NODE);
+    }
+
+    @Test
+    void mergeIntegerLinkedList() {
+        assertLinkedListMerging((List<T>) COMBINED_INTEGER_SORTED_LIST_1_AND_2, linkedListOf((List<T>) EXPECTED_INTEGER_LIST_1), linkedListOf((List<T>) EXPECTED_INTEGER_LIST_2));
+    }
+
+    @Test
+    void mergeIntegerLinkedList_whenFirstNodeNull_thenShouldReturnSecondOne() {
+        assertLinkedListMerging((List<T>) EXPECTED_INTEGER_LIST_2, NULL_NODE, linkedListOf((List<T>) EXPECTED_INTEGER_LIST_2));
+    }
+
+    @Test
+    void mergeIntegerLinkedList_whenSecondNodeNull_thenShouldReturnFirstOne() {
+        assertLinkedListMerging((List<T>) EXPECTED_INTEGER_LIST_1, linkedListOf((List<T>) EXPECTED_INTEGER_LIST_1), NULL_NODE);
     }
 
     @Test
