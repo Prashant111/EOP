@@ -32,7 +32,7 @@ class LinkedListReverseSublistTest {
         SinglyLinkedListNode<String> firstNode = inputString;
         LinkedListReverseSublist linkedListReverseSublist = new LinkedListReverseSublist(firstNode, start, end);
         SinglyLinkedListNode<String> actual = linkedListReverseSublist.reverseSubList();
-        assertEquals(expected, new LinkedList<String>(actual).getList());
+        assertEquals(expected, new LinkedList<>(actual).getList());
     }
 
     @Test
