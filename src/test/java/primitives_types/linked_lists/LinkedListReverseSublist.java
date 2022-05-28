@@ -1,6 +1,5 @@
 package primitives_types.linked_lists;
 
-import primitives_types.linked_lists.cores.LinkedList;
 import primitives_types.linked_lists.cores.SinglyLinkedListNode;
 
 import java.util.ArrayList;
@@ -49,7 +48,7 @@ public class LinkedListReverseSublist<T extends Comparable<T>> {
                 to = iter;
             iter = iter.getNext();
         }
-        SinglyLinkedListNode<T> first = reversePart( start == 1 ? copy : from.getNext(), to);
+        SinglyLinkedListNode<T> first = reversePart(start == 1 ? copy : from.getNext(), to);
         if (Objects.nonNull(from))
             from.setNext(first);
         return Objects.nonNull(from) ? from : first;

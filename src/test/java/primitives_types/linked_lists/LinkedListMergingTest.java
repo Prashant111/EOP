@@ -34,7 +34,7 @@ class LinkedListMergingTest<T extends Comparable<T>> {
         assertEquals(expected, actual.getList());
     }
 
-    private SinglyLinkedListNode linkedListOf(List<T> values) {
+    public static <T> SinglyLinkedListNode linkedListOf(List<T> values) {
         if (Objects.isNull(values))
             return null;
         SinglyLinkedListNode<T> head = new SinglyLinkedListNode<>(firstValue(values));
@@ -46,7 +46,7 @@ class LinkedListMergingTest<T extends Comparable<T>> {
         return head.getNext();
     }
 
-    private T firstValue(List<T> startingNode) {
+    private static <T> T firstValue(List<T> startingNode) {
         return startingNode.get(0);
     }
 
