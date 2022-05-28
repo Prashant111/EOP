@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class LinkedListReverseSublistTest {
 
-    private <T> List<T> list(T... values) {
+    public static <T> List<T> list(T... values) {
         return List.of(values);
     }
 
