@@ -1,7 +1,7 @@
 package primitives_types.linked_lists.cores;
 
 public class SinglyLinkedListNode<T> {
-    private final T data;
+    private T data;
     private SinglyLinkedListNode<T> next;
 
     public SinglyLinkedListNode(T data) {
@@ -25,4 +25,7 @@ public class SinglyLinkedListNode<T> {
         this.next = node;
     }
 
+    public void setData(T data) {
+        this.data = data;
+    }
 }
