@@ -27,7 +27,7 @@ public class DeleteKthNodeFromLast<T> {
 
     private void handleLinkedListExceptions(SinglyLinkedListNode<T> singlyLinkedListNode) {
         if (Objects.isNull(singlyLinkedListNode))
-            throw new InvalidInput();
+            throw new NullInput();
     }
 
     private void handleKthVariableException(SinglyLinkedListNode<T> singlyLinkedListNode, int k) {
@@ -62,6 +62,8 @@ public class DeleteKthNodeFromLast<T> {
         return rearPointer.getData();
     }
 
+    public static class NullInput extends RuntimeException {
+    }
     public static class InvalidInput extends RuntimeException {
     }
 }

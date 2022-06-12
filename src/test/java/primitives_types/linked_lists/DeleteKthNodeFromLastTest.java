@@ -41,6 +41,15 @@ class DeleteKthNodeFromLastTest<T> {
     }
 
     @Test
+    void given_AnInstance_WhenNullInputProvided_ThenCreateNewInstanceOfClassThrowingException() {
+        assertThrows(
+                DeleteKthNodeFromLast.NullInput.class,
+                () ->
+                        new DeleteKthNodeFromLast<Integer>(null, 5)
+        );
+    }
+
+    @Test
     void given_AnInstance_WhenKValueMoreThanLength_ThenCreateNewInstanceOfClassThrowingException() {
         assertThrows(
                 DeleteKthNodeFromLast.InvalidInput.class,
