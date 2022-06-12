@@ -5,7 +5,7 @@ import primitives_types.linked_lists.cores.SinglyLinkedListNode;
 import java.util.Objects;
 
 public class CheckPalindromicity<T> {
-    private SinglyLinkedListNode<T> firstNode;
+    private final SinglyLinkedListNode<T> firstNode;
 
     public CheckPalindromicity(SinglyLinkedListNode<T> firstNode) {
         handleException(firstNode);
