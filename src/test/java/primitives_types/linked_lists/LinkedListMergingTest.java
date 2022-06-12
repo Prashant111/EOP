@@ -26,9 +26,9 @@ class LinkedListMergingTest<T extends Comparable<T>> {
     public static final List<Integer> EXPECTED_INTEGER_LIST_2 =
             List.of(2, 3, 6, 7);
 
-    private void assertLinkedListMerging(List<T> expected, SinglyLinkedListNode sortedList1, SinglyLinkedListNode<T> sortedList2) {
-        LinkedList<T> linkedList1 = new LinkedList<T>(sortedList1);
-        LinkedList<T> linkedList2 = new LinkedList<T>(sortedList2);
+    private void assertLinkedListMerging(List<T> expected, SinglyLinkedListNode<T> sortedList1, SinglyLinkedListNode<T> sortedList2) {
+        LinkedList<T> linkedList1 = new LinkedList<>(sortedList1);
+        LinkedList<T> linkedList2 = new LinkedList<>(sortedList2);
         LinkedListMerging<T> linkedListMerging = new LinkedListMerging<>(linkedList1, linkedList2);
         LinkedList<T> actual = linkedListMerging.mergeLinkedList();
         assertEquals(expected, actual.getList());
@@ -37,6 +37,8 @@ class LinkedListMergingTest<T extends Comparable<T>> {
     public static <T> SinglyLinkedListNode linkedListOf(List<T> values) {
         if (Objects.isNull(values))
             return null;
+        if (values.size() == 0)
+            return new SinglyLinkedListNode(List.of());
         SinglyLinkedListNode<T> head = new SinglyLinkedListNode<>(firstValue(values));
         SinglyLinkedListNode<T> iter = head;
         for (T value : values) {
