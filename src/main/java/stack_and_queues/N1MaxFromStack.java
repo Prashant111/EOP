@@ -1,11 +1,11 @@
 package stack_and_queues;
 
-public class MaxFromStack<T extends Comparable<T>> {
+public class N1MaxFromStack<T extends Comparable<T>> {
     private MaxCustomObject<T>[] stackData;
     private int capacity;
     private int size;
 
-    public MaxFromStack(int capacity) {
+    public N1MaxFromStack(int capacity) {
         handleExceptions(capacity);
         this.capacity = capacity;
         this.stackData = new MaxCustomObject[capacity];
