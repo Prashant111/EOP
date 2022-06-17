@@ -1,5 +1,7 @@
 package primitives_types.strings;
 
+import strings.StringUtils;
+
 import java.util.Objects;
 import java.util.logging.Logger;
 import java.util.stream.IntStream;

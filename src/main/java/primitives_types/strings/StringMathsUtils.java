@@ -1,6 +1,7 @@
 package primitives_types.strings;
 
 import org.jetbrains.annotations.NotNull;
+import strings.StringUtils;
 
 public class StringMathsUtils {
 

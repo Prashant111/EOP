@@ -1,6 +1,6 @@
 package primitives_types.strings;
 
-class DivideOp {
+public class DivideOp {
     private String quotient;
     private String reminder;
 
