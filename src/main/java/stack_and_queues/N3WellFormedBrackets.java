@@ -24,12 +24,9 @@ public class N3WellFormedBrackets {
         for (char ch : chars) {
             if (isOpeningBracket(ch)) {
                 bracketStack.push(ch);
-            } else if (isClosingBracket(ch) ||
-                    bracketStack.isEmpty() ||
-                    !areComplimentaryBrackets(ch, bracketStack.pop())) {
+            } else if (isClosingBracket(ch) &&
+                    (bracketStack.isEmpty() || !areComplimentaryBrackets(ch, bracketStack.pop())))
                 return false;
-            }  //ignore other inputs
-
         }
         return bracketStack.isEmpty();
     }
