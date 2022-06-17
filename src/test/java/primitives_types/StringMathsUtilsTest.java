@@ -1,8 +1,6 @@
 package primitives_types;
 
 import org.junit.Test;
-import primitives_types.strings.DivideOp;
-import primitives_types.strings.StringMathsUtils;
 
 import static org.junit.Assert.*;
 

@@ -2,8 +2,6 @@ package primitives_types;
 
 import org.junit.Before;
 import org.junit.Test;
-import primitives_types.strings.BaseConversion;
-import primitives_types.strings.StringMathsUtils;
 
 import static org.junit.Assert.assertEquals;
 

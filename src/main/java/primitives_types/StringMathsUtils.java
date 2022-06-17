@@ -1,4 +1,4 @@
-package primitives_types.strings;
+package primitives_types;
 
 import org.jetbrains.annotations.NotNull;
 import strings.StringUtils;

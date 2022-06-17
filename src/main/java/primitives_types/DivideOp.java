@@ -1,4 +1,4 @@
-package primitives_types.strings;
+package primitives_types;
 
 public class DivideOp {
     private String quotient;
