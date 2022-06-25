@@ -8,7 +8,7 @@ import java.util.List;
 import static linked_lists.LinkedListReverseSublistTest.list;
 import static org.junit.jupiter.api.Assertions.*;
 
-class N_1_MaxFromStackTest<T extends Comparable<T>> {
+class N1MaxFromStackTest<T extends Comparable<T>> {
     private int validCapacityTwo;
     private int validCapacityTen;
     private int invalidCapacityNegative;
