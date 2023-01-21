@@ -2,6 +2,7 @@ package array;
 
 import java.util.Arrays;
 import java.util.Objects;
+import java.util.stream.IntStream;
 
 
 public class DuplicateSortedArray {
@@ -22,10 +23,7 @@ public class DuplicateSortedArray {
     }
 
     private boolean havingNegativeNumber(int[] nums) {
-        for (int num : nums)
-            if (num < 0)
-                return true;
-        return false;
+        return IntStream.of(nums).boxed().anyMatch(num -> num < 0);
     }
 
     public int[] duplicateSortedArray() {
